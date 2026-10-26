@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Malabares</title>
+  <style>body{margin:0;background:#000;color:#fff;font-family:sans-serif;text-align:center;padding-top:40vh}</style>
+</head>
+<body>
+  Loading...
+  <noscript><p><a href="pc/">PC</a> | <a href="mobile/">Mobile</a></p></noscript>
+  <script>
+    var ua = navigator.userAgent;
+    var movel = /Android|iPhone|iPod|Mobile/i.test(ua) ||
+                (navigator.maxTouchPoints > 1 && Math.min(screen.width, screen.height) < 600);
+    var v = new URLSearchParams(location.search).get('v');
+    var destino = v === 'pc' ? 'pc/' : v === 'mobile' ? 'mobile/' : (movel ? 'mobile/' : 'pc/');
+    location.replace(destino);
+  </script>
+</body>
+</html>
