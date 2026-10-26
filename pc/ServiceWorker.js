@@ -1,9 +1,9 @@
 const cacheName = "DefaultCompany-mala-1.0";
 const contentToCache = [
-    "Build/MalabaresWeb.loader.js",
-    "Build/MalabaresWeb.framework.js",
-    "Build/MalabaresWeb.data",
-    "Build/MalabaresWeb.wasm",
+    "Build/pc.loader.js",
+    "Build/pc.framework.js",
+    "Build/pc.data",
+    "Build/pc.wasm",
     "TemplateData/style.css"
 
 ];
