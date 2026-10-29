@@ -1,6 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+(function () {
+  
+  var toque = window.matchMedia('(pointer: coarse)').matches;
+  var pequeno = Math.min(screen.width, screen.height) < 600;
+  if (!toque || !pequeno) return;
+
+  var naPastaMobile = location.pathname.indexOf('/mobile/') !== -1;
+  var naPastaPc = location.pathname.indexOf('/pc/') !== -1;
+  if (!naPastaMobile && !naPastaPc) return;
+
+
+  function paisagem() {
+    if (screen.orientation && screen.orientation.type)
+      return screen.orientation.type.indexOf('landscape') === 0;
+    if (typeof window.orientation === 'number')
+      return Math.abs(window.orientation) === 90;
+    return false;
+  }
+
+  var timer = null;
+  function verificar() {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      if (naPastaMobile && paisagem()) location.replace('../pc/');
+      else if (naPastaPc && !paisagem()) location.replace('../mobile/');
+    }, 400);
+  }
+
+  verificar();
+  window.addEventListener('orientationchange', verificar);
+  if (screen.orientation && screen.orientation.addEventListener)
+    screen.orientation.addEventListener('change', verificar);
+})();
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Malabares</title>
